@@ -1,0 +1,69 @@
+
+// 变量
+$bgColor: #f8f8f8;
+$header-height: 0px;
+$sideBar-width: 80px;
+
+// 移动端单位换算
+@function rpx($n) {
+    @return #{$n/2}px;
+}
+
+// 单行文本溢出省略
+@mixin text-ellipsis () {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 多行文本溢出省略
+@mixin text-ellipsis-num ($num: 2) {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+// palceholder样式
+@mixin palceholder($color:#ccc){
+    &::-webkit-input-placeholder { // WebKit browsers
+        color:$color;
+        opacity: 1;
+    }
+    &:-moz-placeholder { // Mozilla Firefox 4 to 18
+        color:$color;
+        opacity: 1;
+    }
+    &::-moz-placeholder { // Mozilla Firefox 19+
+        color:$color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder { // Internet Explorer 10+
+        color: $color;
+        opacity: 1;
+    }
+}
+
+// 定位
+@mixin position($absolute: absolute, $left: 0, $top: 0, $right: 0, $bottom: 0) {
+    position: $absolute;
+    left: $left;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+}
+
+input,
+button{
+    border: none;
+    border-width: 0;
+    line-height: 100%;
+    width: 100%;
+    font-size: rpx(28);
+    background: transparent;
+}
+
+input{
+    @include palceholder()
+}

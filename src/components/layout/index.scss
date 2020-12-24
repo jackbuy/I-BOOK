@@ -1,0 +1,70 @@
+@import '@/assets/scss/common.scss';
+.warpper{
+    @include position();
+    background: $bgColor;
+    &__header{
+        @include position(absolute, 0, 0, 0, auto);
+        z-index: 100;
+        height: $header-height;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(30, 30, 30, 0.2);
+    }
+    &__main{
+        @include position(absolute, 0, $header-height, 0, 0);
+        z-index: 1;
+        &__side{
+            @include position(absolute, 0, 0, auto, 0);
+            width: $sideBar-width;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(30, 30, 30, 0.2);
+        }
+        &__content{
+            @include position(absolute, $sideBar-width, 0, 0, 0);
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+}
+
+.side-bar{
+    .list{
+        width: $sideBar-width;
+        height: $sideBar-width;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+        color: #ccc;
+        transition: all 0.3s;
+        &:hover{
+            color: #aaa;
+        }
+        &.active{
+            color: #343434;
+        }
+        &::after{
+            @include position(absolute, 20px, auto, 20px, 0);
+            content: '';
+            height: 1px;
+            background: #f5f5f5;
+        }
+        &:last-child{
+            &::after{
+                height: 0;
+            }
+        }
+        .item{
+            text-align: center;
+            &-icon{
+                i{
+                    font-size: 24px;
+                }
+            }
+            &-name{
+                font-size: 12px;
+                margin-top: 8px;
+            }
+        }
+    }
+}

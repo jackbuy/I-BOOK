@@ -1,0 +1,16 @@
+@import '@/assets/scss/common.scss';
+.search{
+    width: 640px;
+    margin: 0 auto;
+    padding: 30px;
+    &-box{
+        input{
+            width: 100%;
+            background: #eee;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 25px;
+            border-radius: 20px;
+        }
+    }
+}
