@@ -1,27 +1,27 @@
 @import '@/assets/scss/common.scss';
 .warpper{
     @include position();
-    background: $bgColor;
+    @include sub-background();
     &__header{
-        @include position(absolute, 0, 0, 0, auto);
         z-index: 100;
         height: $header-height;
-        background: #fff;
         box-shadow: 0 0 20px rgba(30, 30, 30, 0.2);
+        @include position(absolute, 0, 0, 0, auto);
+        @include base-background();
     }
     &__main{
-        @include position(absolute, 0, $header-height, 0, 0);
         z-index: 1;
+        @include position(absolute, 0, $header-height, 0, 0);
         &__side{
-            @include position(absolute, 0, 0, auto, 0);
             width: $sideBar-width;
-            background: #fff;
             box-shadow: 0 0 20px rgba(30, 30, 30, 0.2);
+            @include base-background();
+            @include position(absolute, 0, 0, auto, 0);
         }
         &__content{
-            @include position(absolute, $sideBar-width, 0, 0, 0);
             overflow-x: hidden;
             overflow-y: auto;
+            @include position(absolute, $sideBar-width, 0, 0, 0);
         }
     }
 }
@@ -35,19 +35,19 @@
         justify-content: center;
         position: relative;
         cursor: pointer;
-        color: #ccc;
         transition: all 0.3s;
+        @include sub-color();
         &:hover{
-            color: #aaa;
+            @include sub-color-hover();
         }
         &.active{
-            color: #343434;
+            @include base-color();
         }
         &::after{
-            @include position(absolute, 20px, auto, 20px, 0);
             content: '';
             height: 1px;
-            background: #f5f5f5;
+            @include sub-background();
+            @include position(absolute, 20px, auto, 20px, 0);
         }
         &:last-child{
             &::after{

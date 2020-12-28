@@ -1,0 +1,20 @@
+
+// 搜索背景
+
+// default
+@mixin search-background(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            background: map-get($map: $theme, $key: search-bg-color );
+        }
+    }
+}
+
+// focus
+@mixin search-background-focus(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            background: map-get($map: $theme, $key: search-bg-color-focus );
+        }
+    }
+}

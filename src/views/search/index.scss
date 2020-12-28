@@ -6,11 +6,15 @@
     &-box{
         input{
             width: 100%;
-            background: #eee;
             line-height: 40px;
             height: 40px;
             padding: 0 25px;
             border-radius: 20px;
+            transition: all 0.3s;
+            @include search-background();
+            &:focus{
+                @include search-background-focus();
+            }
         }
     }
 }

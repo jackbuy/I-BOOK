@@ -1,0 +1,28 @@
+// 字体颜色
+
+// 主
+@mixin base-color(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            color: map-get($map: $theme, $key: base-font-color );
+        }
+    }
+}
+
+// 辅
+@mixin sub-color(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            color: map-get($map: $theme, $key: sub-font-color );
+        }
+    }
+}
+
+// 辅 hover
+@mixin sub-color-hover(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            color: map-get($map: $theme, $key: sub-font-color-hover );
+        }
+    }
+}

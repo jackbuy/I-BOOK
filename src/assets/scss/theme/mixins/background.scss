@@ -1,0 +1,29 @@
+
+// 背景
+
+// 写法备份参考
+// @mixin base-background(){
+//     @each $themename , $theme in $themes {
+//         [data-theme = '#{$themename}'] & {
+//             background: map-get($map: $theme, $key: base-bg-color );
+//         }
+//     }
+// }
+
+// 主
+@mixin base-background(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            background: map-get($map: $theme, $key: base-bg-color );
+        }
+    }
+}
+
+// 辅
+@mixin sub-background(){
+    @each $themename , $theme in $themes {
+        .#{$themename} & {
+            background: map-get($map: $theme, $key: sub-bg-color );
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@import './background.scss';
+@import './font-color.scss';
+@import './search-background.scss';
+
+// 映射主题颜色
+$themes: (
+  default-theme: $default-theme,
+  dark-theme: $dark-theme
+);
