@@ -4,19 +4,19 @@
 
 class Storage {
     get(name) {
-        return sessionStorage.getItem(name)
+        return localStorage.getItem(name)
     }
 
     set(name, value) {
-        return sessionStorage.setItem(name, value)
+        return localStorage.setItem(name, value)
     }
 
     remove(name) {
-        return sessionStorage.removeItem(name)
+        return localStorage.removeItem(name)
     }
 
     clear() {
-        return sessionStorage.clear()
+        return localStorage.clear()
     }
 }
 

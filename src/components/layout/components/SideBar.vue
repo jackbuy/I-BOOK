@@ -15,13 +15,22 @@
                 <div class="item-name">{{ item.name }}</div>
             </div>
         </div>
+        <div
+            class="theme"
+            @click="handleChangeTheme">
+            <i
+                :class="{'iconrijianmoshi': isDefaultTheme, 'iconyejian': !isDefaultTheme}"
+                class="iconfont"></i>
+        </div>
     </div>
 </template>
 
 <script>
+import storage from '@/utils/storage'
 export default {
     data() {
         return {
+            isDefaultTheme: true,
             listData: [
                 {
                     icon: 'iconshouye2-01',
@@ -59,6 +68,10 @@ export default {
     methods: {
         handleRoute(item) {
             this.$router.push(item.path)
+        },
+        handleChangeTheme() {
+            this.isDefaultTheme = !this.isDefaultTheme
+            storage.set('theme', this.isDefaultTheme ? 'default-theme' : 'dark-theme')
         }
     }
 }

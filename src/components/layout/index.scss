@@ -27,6 +27,18 @@
 }
 
 .side-bar{
+    .theme{
+        width: $sideBar-width;
+        height: $sideBar-width;
+        line-height: $sideBar-width;
+        text-align: center;
+        cursor: pointer;
+        @include position(absolute, 0, auto, 0, 0);
+        i{
+            font-size: 20px;
+            @include base-color();
+        }
+    }
     .list{
         width: $sideBar-width;
         height: $sideBar-width;
