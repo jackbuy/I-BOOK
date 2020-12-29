@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { Toast } from 'vant'
 import qs from 'qs'
 import storage from '@/utils/storage'
 
@@ -10,8 +9,8 @@ if (token) axios.defaults.headers.common.Authorization = `Bearer ${token}`
 // 请求拦截器
 axios.interceptors.request.use(function(config) {
     if (config.method === 'post' || config.method === 'put') {
-        // config.data = qs.stringify(config.data) // formData
-        config.data = qs.parse(config.data) // 对象(json)
+        config.data = qs.stringify(config.data) // formData
+        // config.data = qs.parse(config.data) // 对象(json)
     }
     return config
 }, function(error) {
@@ -21,7 +20,7 @@ axios.interceptors.request.use(function(config) {
 // 响应拦截器
 axios.interceptors.response.use(function(response) {
     if (response.data.err_code === 3) {
-        Toast(response.data.err_msg)
+        alert(response.data.err_msg)
         return Promise.reject(new Error(response.data.err_msg))
     } else {
         return Promise.resolve(response.data)
