@@ -18,9 +18,8 @@
         <div
             class="theme"
             @click="handleChangeTheme">
-            <i
-                :class="{'iconrijianmoshi': isDefaultTheme, 'iconyejian': !isDefaultTheme}"
-                class="iconfont"></i>
+            <i v-if="this.defaultTheme === 'default-theme'" class="iconfont iconrijianmoshi"></i>
+            <i v-if="this.defaultTheme === 'dark-theme'" class="iconfont iconyejian"></i>
         </div>
     </div>
 </template>
@@ -30,13 +29,13 @@ import storage from '@/utils/storage'
 export default {
     data() {
         return {
-            isDefaultTheme: true,
+            defaultTheme: '',
             listData: [
-                {
-                    icon: 'iconshouye2-01',
-                    name: '书城',
-                    path: '/'
-                },
+                // {
+                //     icon: 'iconshouye2-01',
+                //     name: '书城',
+                //     path: '/'
+                // },
                 {
                     icon: 'iconsousuo',
                     name: '搜书',
@@ -46,32 +45,44 @@ export default {
                     icon: 'iconshujia',
                     name: '书架',
                     path: '/book'
-                },
-                {
-                    icon: 'iconwode',
-                    name: '我的',
-                    path: '/my'
-                },
-                {
-                    icon: 'iconshezhi',
-                    name: '设置',
-                    path: '/setting'
                 }
+                // {
+                //     icon: 'iconwode',
+                //     name: '我的',
+                //     path: '/my'
+                // }
+                // {
+                //     icon: 'iconshezhi',
+                //     name: '设置',
+                //     path: '/setting'
+                // }
             ]
         }
     },
     computed: {
         currentPath() {
             return this.$route.path
+        },
+        theme() {
+            return storage.get('theme')
         }
+    },
+    created() {
+        this.defaultTheme = this.theme || 'default-theme'
+        this.setTheme(this.defaultTheme)
     },
     methods: {
         handleRoute(item) {
             this.$router.push(item.path)
         },
         handleChangeTheme() {
-            this.isDefaultTheme = !this.isDefaultTheme
-            storage.set('theme', this.isDefaultTheme ? 'default-theme' : 'dark-theme')
+            const theme = this.defaultTheme === 'default-theme' ? 'dark-theme' : 'default-theme'
+            this.defaultTheme = theme
+            this.setTheme(theme)
+            storage.set('theme', theme)
+        },
+        setTheme(theme) {
+            document.querySelector('html').setAttribute('class', theme)
         }
     }
 }

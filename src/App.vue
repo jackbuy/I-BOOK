@@ -1,33 +1,8 @@
 <template>
-    <div id="app" :class="theme">
+    <div id="app">
         <router-view></router-view>
     </div>
 </template>
-
-<script>
-import storage from '@/utils/storage'
-export default {
-    data() {
-        return {
-            theme: 'default-theme'
-        }
-    },
-    computed: {
-        themeData() {
-            return storage.get('theme')
-        }
-    },
-    watch: {
-        themeData: {
-            handler(n, o) {
-                console.log(n)
-                this.theme = n
-            },
-            immediate: true
-        }
-    }
-}
-</script>
 
 <style lang="scss">
 @import '@/assets/scss/reset.scss';

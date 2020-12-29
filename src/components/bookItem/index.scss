@@ -1,7 +1,7 @@
 @import '@/assets/scss/common.scss';
 .book-item{
     width: 200px;
-    background: #fff;
+    @include base-background();
     box-shadow: 0 0 5px rgba(0,0,0,.1);
     &__img{
         width: 100%;
@@ -15,10 +15,11 @@
     &__name{
         padding: 15px 12px 0px 12px;
         font-size: 14px;
+        @include base-color();
     }
     &__author{
         padding: 10px 12px 15px 12px;
-        color: #ccc;
+        @include sub-color();
         font-size: 12px;
     }
 }
