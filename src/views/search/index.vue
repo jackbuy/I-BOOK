@@ -12,7 +12,8 @@
                 v-for="(item, index) in listData"
                 :key="index"
                 :item="item"
-                class="list">
+                class="list"
+                @click="handleClick">
             </book-item>
         </div>
     </div>
@@ -20,6 +21,7 @@
 
 <script>
 import BookItem from '@/components/bookItem'
+import storage from '@/utils/storage'
 import api from '@/utils/api'
 export default {
     components: {
@@ -36,9 +38,20 @@ export default {
             const params = {
                 keyword: this.keyword
             }
+            this.listData = []
             api.search(params).then(res => {
                 this.listData = res.data
             })
+        },
+        handleClick(row) {
+            const books = JSON.parse(storage.get('myBooks')) || []
+            if (!books.map(item => (item.url)).includes(row.url)) {
+                books.unshift(row)
+                storage.set('myBooks', JSON.stringify(books))
+                alert('成功加入书架')
+            } else {
+                alert('书架已有这本书啦~')
+            }
         }
     }
 }

@@ -1,8 +1,19 @@
 @import '@/assets/scss/common.scss';
 .book-item{
     width: 200px;
-    @include base-background();
+    cursor: pointer;
     box-shadow: 0 0 5px rgba(0,0,0,.1);
+    @include base-background();
+    position: relative;
+    &__type{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 12px;
+        padding: 4px 8px;
+        @include base-color();
+        @include base-background();
+    }
     &__img{
         width: 100%;
         height: 250px;

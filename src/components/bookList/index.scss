@@ -1,0 +1,12 @@
+@import '@/assets/scss/common.scss';
+.book-list{
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    @include base-background();
+    position: relative;
+    padding: 15px;
+    &__name{
+        font-size: 14px;
+        @include base-color();
+    }
+}

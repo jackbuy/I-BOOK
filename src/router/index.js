@@ -31,6 +31,13 @@ const routes = [
                 component: () => import('../views/book/index.vue'),
                 meta: {}
             },
+            // 书架
+            {
+                path: '/book/list/:',
+                name: 'bookList',
+                component: () => import('../views/book/index.vue'),
+                meta: {}
+            },
             // 我的
             {
                 path: '/my',
